@@ -22,7 +22,16 @@ const storage = new CloudinaryStorage({
   },
 });
 
+const sourceStorage = new CloudinaryStorage({
+  cloudinary: Cloudinary,
+  params: {
+    folder: "newssource-images",
+    allowedFormats: ["jpg", "png", "jpeg"],
+  },
+});
+
 // Create multer instance with Cloudinary storage
 const upload = multer({ storage: storage });
+const sourceUpload = multer({ storage: sourceStorage });
 
-export default upload;
+export { upload, sourceUpload };
